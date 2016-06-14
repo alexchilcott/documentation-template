@@ -16,6 +16,8 @@
     "gulp-cli": "^1.2.1",
     "gulp-debug": "^2.1.2",
     "gulp-exec": "^2.1.2",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.8.2",
     "gulp-markdown": "^1.2.0",
     "gulp-spawn": "^0.3.0",
     "gulp-watch": "^4.3.6",
