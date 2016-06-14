@@ -26,6 +26,8 @@ var copyGlob = [
 var plantumlSpawnArgs = {
   cmd: 'java',
   args: [
+    '-splash:no',
+    '-Djava.awt.headless=true',
     '-jar',
     'deps/plantuml.8039.jar',
     '-p',
