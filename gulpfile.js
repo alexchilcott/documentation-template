@@ -4,15 +4,11 @@ var gulp = require('gulp');
 var debug = require('gulp-debug');
 var gulp_watch = require('gulp-watch');
 var spawn = require('gulp-spawn');
-var exec = require('gulp-exec');
 var markdown = require('gulp-markdown');
 var gutil = require('gulp-util');
-var header = require('gulp-header');
-var footer = require('gulp-footer');
+var wrapper = require('gulp-wrapper');
 var plumber = require('gulp-plumber');
-
-var childProcessExec = require('child_process').exec;
-var runSequence = require('run-sequence');
+var path = require('path');
 
 var outputDir = './out'
 
@@ -64,8 +60,10 @@ function makeDiagrams(watch) {
 function makeMarkdown(watch) {
   return srcWithWatch(markdownGlob, { base: './src' }, watch)
     .pipe(markdown())
-    .pipe(header(html_header))
-    .pipe(footer(html_footer))
+    .pipe(wrapper({
+      header: html_header,
+      footer: html_footer,
+    }))
     .pipe(gulp.dest(outputDir));
 }
 

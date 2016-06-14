@@ -14,16 +14,13 @@
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.1",
     "gulp-debug": "^2.1.2",
-    "gulp-exec": "^2.1.2",
-    "gulp-footer": "^1.0.5",
-    "gulp-header": "^1.8.2",
     "gulp-markdown": "^1.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-spawn": "^0.3.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.6",
+    "gulp-wrapper": "^1.0.0",
     "live-server": "^1.0.0",
-    "parallelshell": "^2.0.0",
-    "run-sequence": "^1.2.1"
+    "parallelshell": "^2.0.0"
   }
 }
