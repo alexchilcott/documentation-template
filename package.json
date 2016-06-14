@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "shell": "/bin/bash",
     "build": "gulp build",
-    "watch": "gulp watch",
-    "serve:live": "live-server ./out",
-    "serve": "parallelshell \"npm run serve:live\" \"npm run watch\""
+    "serve": "npm run build; parallelshell \"live-server --no-browser ./out\" \"gulp watch\""
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +19,7 @@
     "gulp-header": "^1.8.2",
     "gulp-markdown": "^1.2.0",
     "gulp-spawn": "^0.3.0",
+    "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.6",
     "live-server": "^1.0.0",
     "parallelshell": "^2.0.0",

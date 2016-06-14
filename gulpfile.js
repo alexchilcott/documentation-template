@@ -6,14 +6,14 @@ var gulp_watch = require('gulp-watch');
 var spawn = require('gulp-spawn');
 var exec = require('gulp-exec');
 var markdown = require('gulp-markdown');
-var marked = require('marked');
-var childProcessExec = require('child_process').exec;
-var runSequence = require('run-sequence');
+var gutil = require('gulp-util');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 
-var outputDir = './out'
+var childProcessExec = require('child_process').exec;
+var runSequence = require('run-sequence');
 
+var outputDir = './out'
 
 var diagramsGlob = 'src/**/*.plantuml';
 var markdownGlob = 'src/**/*.md';
@@ -36,14 +36,14 @@ var plantumlSpawnArgs = {
   }
 };
 
-var html_header = `
-<html>
+var html_header = `<html>
   <head>
     <title>Document title 2</title>
     <link rel="stylesheet" href="foghorn.css">
   </head>
 </html>
-<body>`;
+<body>
+`;
 var html_footer = `</body>`;
 
 function srcWithWatch(glob, options, watch) {
@@ -54,7 +54,8 @@ function srcWithWatch(glob, options, watch) {
 function makeDiagrams(watch) {
   return srcWithWatch(diagramsGlob, { base: './src' }, watch)
     .pipe(spawn(plantumlSpawnArgs))
-    .pipe(gulp.dest(outputDir));
+    .pipe(gulp.dest(outputDir))
+    .on('error', gutil.log)
 }
 
 function makeMarkdown(watch) {
@@ -70,36 +71,13 @@ function copyFiles(watch) {
     .pipe(gulp.dest(outputDir));
 }
 
-
-gulp.task('build:diagrams', function() {
-  return makeDiagrams(false);
-});
-
-gulp.task('build:markdown', function () {
-  return makeMarkdown(false);
-});
-
-gulp.task('build:static', function() {
-  return copyFiles(false);
-});
-
-
-gulp.task('watch:diagrams', function() {
-  return makeDiagrams(true);
-});
-
-gulp.task('watch:markdown', function() {
-  return makeMarkdown(true);
-});
-
-gulp.task('watch:static', function() {
-  return copyFiles(true);
-});
+gulp.task('build:diagrams', function() { return makeDiagrams(false); });
+gulp.task('build:markdown', function () { return makeMarkdown(false); });
+gulp.task('build:static', function() { return copyFiles(false); });
+gulp.task('watch:diagrams', function() { return makeDiagrams(true); });
+gulp.task('watch:markdown', function() { return makeMarkdown(true); });
+gulp.task('watch:static', function() { return copyFiles(true); });
 
 
 gulp.task('build', ['build:diagrams', 'build:markdown', 'build:static']);
-gulp.task('watch', function(cb) {
-  runSequence('build',
-              ['watch:diagrams', 'watch:markdown', 'watch:static'],
-              cb);
-});
+gulp.task('watch', ['watch:diagrams', 'watch:markdown', 'watch:static']);
