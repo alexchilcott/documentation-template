@@ -7,7 +7,7 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "serve:live": "live-server ./out",
-    "serve": "parallelshell 'npm run serve:live' 'npm run watch'"
+    "serve": "parallelshell \"npm run serve:live\" \"npm run watch\""
   },
   "author": "",
   "license": "ISC",
