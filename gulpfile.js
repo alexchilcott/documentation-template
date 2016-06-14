@@ -35,14 +35,18 @@ var plantumlSpawnArgs = {
   }
 };
 
-var html_header = `<html>
-  <head>
-    <title>Document title 2</title>
-    <link rel="stylesheet" href="foghorn.css">
-  </head>
-</html>
-<body>
-`;
+function html_header(data) {
+  const filename = data.history[0];
+  const title = path.basename(filename, path.extname(filename));
+  return `<html>
+    <head>
+      <title>${title}</title>
+      <link rel="stylesheet" href="foghorn.css">
+    </head>
+  </html>
+  <body>`;
+}
+
 var html_footer = `</body>`;
 
 function srcWithWatch(glob, options, watch) {
