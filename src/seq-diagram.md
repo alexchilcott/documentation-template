@@ -1,5 +1,5 @@
 # Example sequence diagram
 
-For more information, see [http://plantuml.com/sequence.html](The PlantUML website)
+For more information, see [The PlantUML website](http://plantuml.com/sequence.html).
 
 ![Alt text](/readme.svg)
