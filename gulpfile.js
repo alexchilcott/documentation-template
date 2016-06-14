@@ -9,6 +9,7 @@ var markdown = require('gulp-markdown');
 var gutil = require('gulp-util');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
+var plumber = require('gulp-plumber');
 
 var childProcessExec = require('child_process').exec;
 var runSequence = require('run-sequence');
@@ -55,9 +56,9 @@ function srcWithWatch(glob, options, watch) {
 
 function makeDiagrams(watch) {
   return srcWithWatch(diagramsGlob, { base: './src' }, watch)
+    .pipe(plumber())
     .pipe(spawn(plantumlSpawnArgs))
-    .pipe(gulp.dest(outputDir))
-    .on('error', gutil.log)
+    .pipe(gulp.dest(outputDir));
 }
 
 function makeMarkdown(watch) {

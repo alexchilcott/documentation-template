@@ -18,6 +18,7 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.8.2",
     "gulp-markdown": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-spawn": "^0.3.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.6",
