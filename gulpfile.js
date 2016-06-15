@@ -25,6 +25,7 @@ var plantumlSpawnArgs = {
   args: [
     '-splash:no',
     '-Djava.awt.headless=true',
+    '-DGRAPHVIZ_DOT="deps/graphviz-2.38/release/bin/dot.exe"',
     '-jar',
     'deps/plantuml.8039.jar',
     '-p',
