@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "shell": "/bin/bash",
     "build": "gulp build",
-    "serve": "npm run build; parallelshell \"live-server --no-browser ./out\" \"gulp watch\""
+    "serve": "npm run build && parallelshell \"live-server --no-browser ./out\" \"gulp watch\""
   },
   "author": "",
   "license": "ISC",
